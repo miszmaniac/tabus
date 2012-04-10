@@ -1,0 +1,41 @@
+<h1>Wyświetl karty</h1>
+
+<table>
+  <tr>
+    <th rowspan=2>Tytuł</th>
+    <th colspan=5>Podpowiedzi</th>
+    <th rowspan=2>Użyto</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+  <tr>
+    <th>1</th>
+    <th>2</th>
+    <th>3</th>
+    <th>4</th>
+    <th>5</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @cards.each do |card| %>
+  <tr>
+    <td><%= card.title %></td>
+    <td><%= card.prompt1 %></td>
+    <td><%= card.prompt2 %></td>
+    <td><%= card.prompt3 %></td>
+    <td><%= card.prompt4 %></td>
+    <td><%= card.prompt5 %></td>
+    <td><%= card.times_used %></td>
+    <td><%= link_to 'Pokaż', card %></td>
+    <td><%= link_to 'Edytuj', edit_card_path(card) %></td>
+    <td><%= link_to 'Usuń', card, confirm: 'Na pewno usunąć?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Card', new_card_path %>

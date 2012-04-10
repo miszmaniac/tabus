@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @card.title %>
+</p>
+
+<p>
+  <b>Prompt1:</b>
+  <%= @card.prompt1 %>
+</p>
+
+<p>
+  <b>Prompt2:</b>
+  <%= @card.prompt2 %>
+</p>
+
+<p>
+  <b>Prompt3:</b>
+  <%= @card.prompt3 %>
+</p>
+
+<p>
+  <b>Prompt4:</b>
+  <%= @card.prompt4 %>
+</p>
+
+<p>
+  <b>Prompt5:</b>
+  <%= @card.prompt5 %>
+</p>
+
+<p>
+  <b>Times used:</b>
+  <%= @card.times_used %>
+</p>
+
+
+<%= link_to 'Edytuj', edit_card_path(@card) %> |
+<%= link_to 'Cofnij', cards_path %>
