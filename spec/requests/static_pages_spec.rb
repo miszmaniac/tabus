@@ -8,9 +8,14 @@ describe "StaticPages" do
 
       page.should have_content('Strona główna')
     end
-    it "should have the title 'tabu" do
+    it "should have the title Tabu - najlepsza gra towarzyska" do
       visit '/static_pages/home'
       page.should have_selector('title',
+                                :text => "Tabu - najlepsza gra towarzyska")
+    end
+    it "should have not have 'Strona główna' in the title" do
+      visit '/static_pages/home'
+      page.should_not have_selector('title',
                                 :text => "Strona główna")
     end
   end
