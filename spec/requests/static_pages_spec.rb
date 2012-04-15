@@ -2,35 +2,33 @@
 require 'spec_helper'
 
 describe "StaticPages" do
+  subject { page }
+
   describe "Home page" do
-    it "should have the content 'Strona główna'" do
-      visit '/static_pages/home'
+    before { visit root_path }
 
-      page.should have_content('Strona główna')
-    end
-    it "should have the title Tabu - najlepsza gra towarzyska" do
-      visit '/static_pages/home'
-      page.should have_selector('title',
-                                :text => "Tabu - najlepsza gra towarzyska")
-    end
-    it "should have not have 'Strona główna' in the title" do
-      visit '/static_pages/home'
-      page.should_not have_selector('title',
-                                :text => "Strona główna")
-    end
+    it { should have_selector('h1', text: 'Tabu') }
+    it { should have_content('Tabu') }
+    it { should have_selector('title', :text => full_title(''))}
+    it { should_not have_selector('title', :text => "Strona główna") }
   end
+
   describe "Help page" do
+    before { visit help_path }
 
-    it "should have the content 'Pomoc'" do
-      visit '/static_pages/help'
-      page.should have_content('pomoc')
-    end
+    it { should have_content('pomoc') }
   end
-  describe "Privacy policy" do
 
-    it "should have the content 'polityka prywatnosci'" do
-      visit '/static_pages/privacy'
-      page.should have_content('Polityka prywatności')
-    end
+  describe "Privacy policy" do
+    before { visit privacy_path }
+
+    it { should have_content('Polityka prywatności') }
+  end
+
+  describe "Contact page" do
+    before {visit contact_path }
+
+    it { should have_selector('h1', text: 'Kontakt') }
+    it { should have_selector('title', text: full_title('Kontakt')) }
   end
 end

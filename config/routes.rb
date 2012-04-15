@@ -1,9 +1,14 @@
 # -*- encoding : utf-8 -*-
 Tabu::Application.routes.draw do
-  get "static_pages/home"
+  get "users/new"
 
-  get "static_pages/help"
-  get "static_pages/privacy"
+  root :to => 'static_pages#home'
+
+  match '/zaloz_konto',  to: 'users#new', :as => :signup
+  match '/pomoc', to: 'static_pages#help', :as => :help
+  match '/kontakt', to: 'static_pages#contact', :as => :contact
+  match '/polityka_prywatnosci', to: 'static_pages#privacy', :as => :privacy
+  match '/o_stronie', to: 'static_pages#about', :as => :about
 
   resources :comments
 
@@ -60,7 +65,7 @@ Tabu::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+
 
   # See how all your routes lay out with "rake routes"
 
