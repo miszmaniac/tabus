@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 Tabu::Application.routes.draw do
-  get "users/new"
+  resources :users
 
   root :to => 'static_pages#home'
 
@@ -12,7 +12,7 @@ Tabu::Application.routes.draw do
 
   resources :comments
 
-  resources :users
+
 
   resources :cards
 
