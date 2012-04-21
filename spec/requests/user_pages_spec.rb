@@ -42,7 +42,13 @@ describe "User pages" do
         let(:user) { User.find_by_email('user@example.com') }
 
         it { should have_selector('title', text: User.name) }
-        it { should have_selector('div.alert.alert-success', text: 'Witamy') }
+        it { should have_selector('div.alert.alert-success', text: 'Witaj w Tabus!') }
+        it { should have_link('Wyloguj') }
+      end
+
+      describe "followed by signout" do
+        before { click_link :singout }
+        it { should have_link('Zaloguj') }
       end
     end
 

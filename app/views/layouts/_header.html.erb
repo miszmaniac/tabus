@@ -6,7 +6,24 @@
         <ul class="nav pull-right">
           <li><%= link_to "Strona główna",    root_path %></li>
           <li><%= link_to "Karty",    cards_path %></li>
-          <li><%= link_to "Zaloguj się", '#' %></li>
+          <% if signed_in? %>
+              <li><%= link_to "Użytkownicy", '#' %></li>
+              <li id="fat-menu" class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  Konto <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><%= link_to "Profil", current_user %></li>
+                  <li><%= link_to "Ustawienia", '#' %></li>
+                  <li class="divider"></li>
+                  <li>
+                    <%= link_to "Wyloguj", signout_path, method: "delete" %>
+                  </li>
+                </ul>
+              </li>
+          <% else %>
+              <li><%= link_to "Zaloguj", signin_path %></li>
+          <% end %>
         </ul>
       </nav>
     </div>

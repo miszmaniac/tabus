@@ -1,10 +1,15 @@
 # -*- encoding : utf-8 -*-
 Tabu::Application.routes.draw do
   resources :users
+  resources :sessions, only: [:new, :create, :destroy]
+
+  match '/zaloz_konto',  to: 'users#new', :as => :signup
+  match '/zaloguj',  to: 'sessions#new', :as => :signin
+  match '/wyloguj', to: 'sessions#destroy', via: :delete,  :as => :signout
 
   root :to => 'static_pages#home'
 
-  match '/zaloz_konto',  to: 'users#new', :as => :signup
+
   match '/pomoc', to: 'static_pages#help', :as => :help
   match '/kontakt', to: 'static_pages#contact', :as => :contact
   match '/polityka_prywatnosci', to: 'static_pages#privacy', :as => :privacy
