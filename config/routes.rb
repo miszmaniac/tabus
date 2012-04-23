@@ -3,9 +3,11 @@ Tabu::Application.routes.draw do
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
 
+  match '/uzytkownicy',  to: 'users#index', :as => :usersindex
   match '/zaloz_konto',  to: 'users#new', :as => :signup
   match '/zaloguj',  to: 'sessions#new', :as => :signin
   match '/wyloguj', to: 'sessions#destroy', via: :delete,  :as => :signout
+  match '/edytuj_konto', to: 'sessions#edit', :as => :useredit
 
   root :to => 'static_pages#home'
 

@@ -1,5 +1,7 @@
 # -*- encoding : utf-8 -*-
 
+include ApplicationHelper
+
 def valid_signin(user)
   fill_in "Email",    with: user.email
   fill_in "Hasło", with: user.password
@@ -12,4 +14,11 @@ RSpec::Matchers.define :have_error_message do |message|
   end
 end
 
-include ApplicationHelper
+def sign_in(user)
+  visit signin_path
+  fill_in "Email",    with: user.email
+  fill_in "Hasło", with: user.password
+  click_button "Zaloguj"
+  # Sign in when not using Capybara as well.
+  cookies[:remember_token] = user.remember_token
+end
