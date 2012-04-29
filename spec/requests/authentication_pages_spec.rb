@@ -59,6 +59,22 @@ describe "Authentication" do
             end
           end
         end
+
+        describe "in the Microposts controller" do
+
+          describe "submitting to the create action" do
+            before { post microposts_path }
+            specify { response.should redirect_to(signin_path) }
+          end
+
+          describe "submitting to the destroy action" do
+            before do
+              micropost = FactoryGirl.create(:micropost)
+              delete micropost_path(micropost)
+            end
+            specify { response.should redirect_to(signin_path) }
+          end
+        end
       end
 
       describe "visiting the user index" do
@@ -95,4 +111,6 @@ describe "Authentication" do
       specify { response.should redirect_to(root_path) }
     end
   end
+
+
 end

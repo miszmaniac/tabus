@@ -19,7 +19,8 @@ group :production do
 end
 
 group :development do
-  gem 'annotate', '~> 2.4.1.beta'
+  gem 'annotate', '~> 2.4.0'
+  gem 'thin'
 
 end
 group :development, :test  do

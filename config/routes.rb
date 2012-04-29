@@ -1,7 +1,10 @@
 # -*- encoding : utf-8 -*-
 Tabu::Application.routes.draw do
+  get "microposts/create"
+
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
+  resources :microposts, only: [:create, :destroy]
 
   match '/uzytkownicy',  to: 'users#index', :as => :usersindex
   match '/zaloz_konto',  to: 'users#new', :as => :signup

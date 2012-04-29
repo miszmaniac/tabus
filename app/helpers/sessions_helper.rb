@@ -1,3 +1,5 @@
+# -*- encoding : utf-8 -*-
+
 module SessionsHelper
   def sign_in(user)
     cookies.permanent[:remember_token] = user.remember_token
@@ -14,6 +16,13 @@ module SessionsHelper
 
   def current_user?(user)
     user == current_user
+  end
+
+  def signed_in_user
+    unless signed_in?
+      store_location
+      redirect_to signin_path, notice: "Zaloguj się"
+    end
   end
 
   def signed_in?
@@ -33,8 +42,6 @@ module SessionsHelper
   def store_location
     session[:return_to] = request.fullpath
   end
-
-
 
   private
 
