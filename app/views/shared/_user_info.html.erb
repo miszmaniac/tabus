@@ -8,5 +8,5 @@
   <%= link_to "Pokaż mój profil", current_user %>
 </span>
 <span>
-  <%= pluralize(current_user.microposts.count, "micropost") %>
+  <%= I18n.t :micropost, :count => current_user.microposts.count %>
 </span>

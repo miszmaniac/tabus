@@ -223,3 +223,13 @@ pl:
       long: ! '%B %d, %Y %H:%M'
       short: ! '%d %b %H:%M'
     pm: po południu
+  micropost:
+    one: "1 wpis"
+    few: "%{count} wpisy"
+    other: "%{count} wpisów"
+  error:
+    one: "1 błąd"
+    few: "%{count} błędy"
+    other: "%{count} błędów"
+
+
