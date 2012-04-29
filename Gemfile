@@ -20,9 +20,8 @@ end
 
 group :development do
   gem 'annotate', '~> 2.4.0'
-  gem 'thin'
-
 end
+
 group :development, :test  do
   gem 'rspec-rails', '2.9.0'
   gem 'guard-rspec', '0.5.5'
