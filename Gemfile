@@ -20,6 +20,7 @@ end
 
 group :development do
   gem 'annotate', '~> 2.4.0'
+  gem 'guard-livereload'
 end
 
 group :development, :test  do
