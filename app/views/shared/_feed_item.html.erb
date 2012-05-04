@@ -8,8 +8,6 @@
     Dodano <%= time_ago_in_words(feed_item.created_at) %> temu.
   </span>
   <% if current_user?(feed_item.user) %>
-      <%= link_to "Usuń", feed_item, method:  :delete,
-                  confirm: "Na pewno?",
-                  title:   feed_item.content %>
+      <%= render('shared/delete_something', :something => feed_item) %>
   <% end %>
 </li>

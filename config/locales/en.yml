@@ -7,3 +7,11 @@ en:
    attributes:
     user:
      password_digest: "Password"
+  micropost:
+    one: "1 post"
+    few: "%{count} posts"
+    other: "%{count} posts"
+  error:
+    one: "1 error"
+    few: "%{count} errors"
+    other: "%{count} errors"

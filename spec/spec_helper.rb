@@ -81,3 +81,16 @@ RSpec.configure do |config|
   # rspec-rails.
   config.infer_base_class_for_anonymous_controllers = false
 end
+
+
+class ActionView::TestCase::TestController
+  def default_url_options(options={})
+    { :locale => I18n.default_locale }
+  end
+end
+
+class ActionDispatch::Routing::RouteSet
+  def default_url_options(options={})
+    { :locale => I18n.default_locale }
+  end
+end

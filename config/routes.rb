@@ -1,31 +1,30 @@
 # -*- encoding : utf-8 -*-
 Tabu::Application.routes.draw do
-  get "microposts/create"
+  scope "(:locale)", :locale => /en|pl/ do
+    get "microposts/create"
 
-  resources :users
-  resources :sessions, only: [:new, :create, :destroy]
-  resources :microposts, only: [:create, :destroy]
+    resources :users
+    resources :sessions, only: [:new, :create, :destroy]
+    resources :microposts, only: [:create, :destroy]
 
-  match '/uzytkownicy',  to: 'users#index', :as => :usersindex
-  match '/zaloz_konto',  to: 'users#new', :as => :signup
-  match '/zaloguj',  to: 'sessions#new', :as => :signin
-  match '/wyloguj', to: 'sessions#destroy', via: :delete,  :as => :signout
-  match '/edytuj_konto', to: 'sessions#edit', :as => :useredit
+    match '/uzytkownicy',  to: 'users#index', :as => :usersindex
+    match '/zaloz_konto',  to: 'users#new', :as => :signup
+    match '/zaloguj',  to: 'sessions#new', :as => :signin
+    match '/wyloguj', to: 'sessions#destroy', via: :delete,  :as => :signout
+    match '/edytuj_konto', to: 'sessions#edit', :as => :useredit
 
-  root :to => 'static_pages#home'
-
-
-  match '/pomoc', to: 'static_pages#help', :as => :help
-  match '/kontakt', to: 'static_pages#contact', :as => :contact
-  match '/polityka_prywatnosci', to: 'static_pages#privacy', :as => :privacy
-  match '/o_stronie', to: 'static_pages#about', :as => :about
-
-  resources :comments
+    root :to => 'static_pages#home'
 
 
+    match '/pomoc', to: 'static_pages#help', :as => :help
+    match '/kontakt', to: 'static_pages#contact', :as => :contact
+    match '/polityka_prywatnosci', to: 'static_pages#privacy', :as => :privacy
+    match '/o_stronie', to: 'static_pages#about', :as => :about
 
-  resources :cards
+    resources :comments
+    resources :cards
 
+  end
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
