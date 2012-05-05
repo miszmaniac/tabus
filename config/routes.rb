@@ -3,9 +3,14 @@ Tabu::Application.routes.draw do
   scope "(:locale)", :locale => /en|pl/ do
     get "microposts/create"
 
-    resources :users
+    resources :users do
+      member do
+        get :following, :followers
+      end
+    end
     resources :sessions, only: [:new, :create, :destroy]
     resources :microposts, only: [:create, :destroy]
+    resources :relationships, only: [:create, :destroy]
 
     match '/uzytkownicy',  to: 'users#index', :as => :usersindex
     match '/zaloz_konto',  to: 'users#new', :as => :signup
